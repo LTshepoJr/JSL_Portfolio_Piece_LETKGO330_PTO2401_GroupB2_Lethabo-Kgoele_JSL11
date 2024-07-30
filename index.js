@@ -19,7 +19,15 @@ function initializeData() {
 
 // TASK: Get elements from the DOM
 const elements = {
-
+  columnDivs: document.querySelectorAll('.column-div'),
+  headerBoardName:document.getElementById('header-board-name'),
+  editTaskModal:document.getElementById('edit-task-form'),
+  filterDiv: document.getElementById('filterDiv'),
+  showSideBarBtn: document.getElementById('show-side-bar-btn'),
+  themeSwitch:document.getElementById('switch'),
+  hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
+  createNewTaskBtn: document.getElementById('add-new-task-btn'),
+  modalWindow:document.getElementById("new-task-modal-window"),
 }
 
 let activeBoard = ""
@@ -32,7 +40,7 @@ function fetchAndDisplayBoardsAndTasks() {
   displayBoards(boards);
   if (boards.length > 0) {
     const localStorageBoard = JSON.parse(localStorage.getItem("activeBoard"))
-    activeBoard = localStorageBoard ? localStorageBoard ;  boards[0]; 
+    activeBoard = localStorageBoard ? localStorageBoard :  boards[0]; 
     elements.headerBoardName.textContent = activeBoard
     styleActiveBoard(activeBoard)
     refreshTasksUI();
@@ -88,11 +96,14 @@ function filterAndDisplayTasksByBoard(boardName) {
       // Listen for a click event on each task and open a modal
       taskElement.click() => { 
         openEditTaskModal(task);
-      });
+      }
+  }
+);
 
       tasksContainer.appendChild(taskElement);
-    });
-  });
+}
+);
+});
 }
 
 
@@ -180,7 +191,7 @@ function setupEventListeners() {
 // Toggles tasks modal
 // Task: Fix bugs
 function toggleModal(show, modal = elements.modalWindow) {
-  modal.style.display = show ? 'block' => 'none'; 
+  modal.style.display = show ? 'block' : 'none'; 
 }
 
 /*************************************************************************************************************************************************
