@@ -216,9 +216,31 @@ function addTask(event) {
   }
 }
 
-function toggleSidebar(show) {}
+function toggleSidebar(show) {
+  const sideBar = document.getElementById("side-bar-div");
+  const showSideBarBtn = document.getElementById("show-side-bar-btn");
+  localStorage.setItem("showSideBar", show);
+  if (show) {
+    showSideBarBtn.style.display = "none";
+    sideBar.classList.add("show-sidebar");
+  } else {
+    showSideBarBtn.style.display = "block";
+    sideBar.classList.remove("show-sidebar");
+  }
+}
 
-function toggleTheme() {}
+function toggleTheme() {
+  const isLightTheme = document.body.classList.contains("light-theme");
+  const logoImg = document.getElementById("logo");
+  localStorage.setItem("light-theme", !isLightTheme ? "enabled" : "disabled");
+  if (localStorage.getItem("light-theme") === "enabled") {
+    logoImg.src = "./assets/logo-light.svg";
+    document.body.classList.toggle("light-theme");
+  } else if (localStorage.getItem("light-theme") === "disabled") {
+    logoImg.src = "./assets/logo-dark.svg";
+    document.body.classList.toggle("light-theme");
+  }
+}
 
 function openEditTaskModal(task) {
   // Set task details in modal inputs
