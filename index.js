@@ -150,8 +150,7 @@ function addTaskToUI(task) {
   taskElement.className = "task-div";
   taskElement.textContent = task.title; // Modify as needed
   taskElement.setAttribute("data-task-id", task.id);
-
-  tasksContainer.appendChild();
+  tasksContainer.appendChild(taskElement);
 }
 
 function setupEventListeners() {
@@ -266,6 +265,7 @@ function openEditTaskModal(task) {
   deleteTaskBtn.addEventListener("click", () => {
     deleteTask(task.id);
     toggleModal(false, elements.editTaskModal);
+    refreshTasksUI();
   });
 
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
