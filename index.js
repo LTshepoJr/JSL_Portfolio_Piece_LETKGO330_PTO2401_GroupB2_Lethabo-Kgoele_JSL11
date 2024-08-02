@@ -4,7 +4,6 @@ import {
   getTasks,
   createNewTask,
   patchTask,
-  putTask,
   deleteTask,
 } from "./utils/taskFunctions.js";
 import { initialData } from "./initialData.js";
@@ -36,6 +35,10 @@ const elements = {
   modalWindow: document.getElementById("new-task-modal-window"),
   editTaskTitleInput: document.getElementById("edit-task-title-input"),
   editTaskDescriptionInput: document.getElementById("edit-task-desc-input"),
+  newModalTitleInput: document.querySelector(".modal-input"),
+  newModalDescriptionInput: document.getElementById("desc-input"),
+  newModalSelectStatusInput: document.getElementById("select-status"),
+  editTaskSelectInput: document.getElementById("edit-select-status"),
 };
 
 let activeBoard = "";
@@ -129,7 +132,7 @@ function styleActiveBoard(boardName) {
 
 function addTaskToUI(task) {
   const column = document.querySelector(
-    '.column-div[data-status="${task.status}"]'
+    `.column-div[data-status="${task.status}"]`
   );
   if (!column) {
     console.error(`Column not found for status: ${task.status}`);
@@ -206,8 +209,14 @@ function addTask(event) {
   event.preventDefault();
 
   //Assign user input to the task object
-  const task = {};
+  const task = {
+    title: elements.newModalTitleInput.value,
+    description: elements.newModalDescriptionInput.value,
+    status: elements.newModalSelectStatusInput.value,
+    board: activeBoard, // Assign the active board to the task object
+  };
   const newTask = createNewTask(task);
+  console.log(newTask);
   if (newTask) {
     addTaskToUI(newTask);
     toggleModal(false);
@@ -281,6 +290,7 @@ function saveTaskChanges(taskId) {
     id: taskId,
     title: newTitle,
     description: newDescription,
+    status: elements.editTaskSelectInput.value,
   };
 
   // Update task using a helper function
