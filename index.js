@@ -234,13 +234,17 @@ function toggleSidebar(show) {
 function toggleTheme() {
   const isLightTheme = document.body.classList.contains("light-theme");
   const logoImg = document.getElementById("logo");
+  const themeCheck = document.getElementById("switch");
   localStorage.setItem("light-theme", !isLightTheme ? "enabled" : "disabled");
-  if (localStorage.getItem("light-theme") === "enabled") {
+  if (localStorage.getItem("light-theme") === "enabled" && themeCheck.checked) {
     logoImg.src = "./assets/logo-light.svg";
-    document.body.classList.toggle("light-theme");
-  } else if (localStorage.getItem("light-theme") === "disabled") {
+    themeCheck.checked = document.body.classList.toggle("light-theme");
+  } else if (
+    localStorage.getItem("light-theme") === "disabled" &&
+    !themeCheck.checked
+  ) {
     logoImg.src = "./assets/logo-dark.svg";
-    document.body.classList.toggle("light-theme");
+    themeCheck.checked = document.body.classList.toggle("light-theme");
   }
 }
 
@@ -292,6 +296,7 @@ function saveTaskChanges(taskId) {
 
 document.addEventListener("DOMContentLoaded", function () {
   init(); // init is called after the DOM is fully loaded
+  initializeData();
 });
 
 function init() {
