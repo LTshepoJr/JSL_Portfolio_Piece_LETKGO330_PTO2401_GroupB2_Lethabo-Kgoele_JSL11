@@ -889,7 +889,7 @@ input:checked + #label-checkbox-theme:after {
   }
 
   .hide-side-bar-div {
-    display: none;
+    display: block;
   }
 
   .toggle-div {
@@ -1116,7 +1116,7 @@ input:checked + #label-checkbox-theme:after {
   }
 
   .hide-side-bar-div {
-    display: none;
+    display: block;
   }
 
   .toggle-div {
