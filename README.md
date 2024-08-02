@@ -115,3 +115,9 @@ As you embark on implementing these features, remember the value of tackling the
 - **Saving New Tasks in localStorage**: As a user, I want my newly created tasks to be saved in localStorage so that my tasks persist even when I close or refresh the browser.
 - **Reflecting Task Updates in localStorage**: As a user, I expect tasks that I update to have their changes reflected in localStorage so that any modifications are not lost.
 - **Removing Deleted Tasks from localStorage**: As a user, I want tasks that I delete to be removed from localStorage so that my task list remains accurate and up-to-date.
+
+# Loom Presentations
+
+- **The website presentation**: [Website Presentation](https://www.loom.com/share/61711388bfe646f3aedc368e12facb0b?sid=f722d4b4-c743-4170-ac0e-31e028123993).
+
+- **The JavaScript presentation**: [JavaScript Presentation](https://www.loom.com/share/4c988dfeb53c490fbed95b1ab93773c1?sid=0a7cdc89-317c-4266-a412-27ec735fbe5b).
